@@ -1,0 +1,24 @@
+#include <stdio.h>
+int linearSearch(int a[],int n,int key)
+{
+if(a[n] == key || n == -1)
+return n;
+return linearSearch(a,n-1,key);
+}
+int main()
+{
+int n,i,key,index;
+printf("enter n value");
+scanf("%d",&n);
+int a[n];
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+printf("\nenter search element\n");
+scanf("%d",&key);
+index = linearSearch(a,n,key);
+if(index == -1)
+
+printf("Search element not found");
+else
+printf("Search element found at index %d",index);
+}

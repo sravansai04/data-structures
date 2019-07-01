@@ -1,0 +1,162 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+struct node*prev;
+int data;
+struct node*next;
+};
+
+struct node *start=NULL;
+
+
+void create()
+{
+struct node *newnode,*temp;
+int a;
+printf("enter data into list ");
+scanf("%d",&a);
+newnode=(struct node*)malloc(sizeof(struct node));
+newnode->data=a;
+newnode->next=NULL;
+newnode->prev=NULL;
+if(start==NULL)
+{
+start=newnode;
+}
+else
+{
+temp=start;
+while(temp->next!=NULL)
+{
+temp=temp->next;
+}
+temp->next=newnode;
+newnode->prev=temp;
+}
+}
+
+
+void insert()
+{
+struct node*newnode,*temp;
+int a,pos;
+printf("enter value to list");
+scanf("%d",&a);
+printf("enter position");
+scanf("%d",&pos);
+newnode=(struct node*)malloc(sizeof(struct node));
+newnode->data=a;
+newnode->next=NULL;
+newnode->prev=NULL;
+temp=start;
+for(int i=1;i<pos;i++)
+{
+temp=temp->next;
+}
+newnode->next=temp->next;
+temp->next->prev=newnode;
+temp->next=newnode;
+newnode->prev=temp;
+}
+
+
+void search()
+{
+int value;
+struct node *temp;
+if(start==NULL)
+{
+printf("no list to search\n");
+}
+scanf("%d",&value);
+temp=start;
+while(temp->next!=NULL)
+{
+if(temp->data=value)
+{
+printf("found");
+break ;
+}
+else
+temp=temp->next;
+}
+}
+
+void delete()
+{
+int p,i;
+struct node *temp;
+temp=start;
+printf("enter position to be deleted\n");
+scanf("%d",&p);
+if(start==NULL)
+{
+printf("no elements in the list:");
+exit(0);
+}
+for(i=0;i<p;i++)
+{
+temp=temp->next;
+}
+temp->prev->next=temp->next;
+temp->next->prev=temp->prev;
+}
+
+
+void display()
+{
+struct node *temp;
+temp=start;
+while(temp!=NULL)
+while(temp!=NULL)
+{
+printf("%d ",temp->data);
+temp=temp->next;
+}
+}
+
+void main()
+{
+
+int choice,n,i;
+printf("enter how many nodes : ");
+scanf("%d",&n);
+for(i=1;i<=n;i++)
+{
+create();
+}
+printf("enter your choice\n 2.Insert data into node\n 3.Delete from double linked list\n 4.search element\n 5.Display double linked list\n 6.exit ");
+while(choice!=6)
+{
+
+if(choice==2)
+{
+printf("insert data into list");
+insert();
+display();
+}
+else if(choice==3)
+{
+printf("deleting element");
+delete();
+display();
+}
+else if(choice==4)
+{
+printf("searching element");
+search();
+}
+else if(choice==5)
+{
+display();
+}
+else if(choice==6)
+{
+printf("exiting");
+exit(0);
+}
+printf("\nenter choice again\n");
+scanf("%d",&choice);
+}
+}

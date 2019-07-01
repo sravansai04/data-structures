@@ -1,0 +1,84 @@
+#include<stdlib.h>
+#include<stdio.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *top=NULL;
+void push();
+void pop();
+void display();
+
+int main()
+{
+    int choice;
+    while(1)
+    {
+   
+        printf("1.insert \n");
+        printf("2.delete \n");
+        printf("3.display \n");
+        printf("4.exit\n");
+        printf(" enter ur choice \n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:push();
+            break;
+            case 2: pop();
+            break;
+            case 3: display();
+            break;
+            case 4:exit(0);
+            break;
+            default:printf("invalid choice");
+             break;           
+        }
+    }     
+    }
+
+void push()
+{
+    int a;
+    struct node*newnode;
+    printf("enter value to stack");
+    scanf("%d",&a);
+    newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=a;
+    newnode->next=NULL;
+    if(top==NULL)
+    {
+        top=newnode;
+    }
+    else
+    {
+        newnode->next=top;
+        top=newnode;
+    }
+    
+}
+void pop()
+{
+    struct node *temp;
+    if(top==NULL)
+    {
+        printf("stack underflow");
+    }
+    else
+    {
+        temp=top;
+        printf("%d is deleted",top->data);
+        top=top->next;
+    }
+}
+void display()
+{
+    struct node *temp;
+    temp=top;
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+}

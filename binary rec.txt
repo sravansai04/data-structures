@@ -1,0 +1,39 @@
+#include<stdio.h>
+int binary(int[],int,int,int);
+int main()
+{
+int i,key,n,mid,high,low,c=0;
+scanf("%d",&n);
+int a[n];
+for(i=0;i<n;i++)
+{
+scanf("%d",&a[i]);
+}
+scanf("%d",&key);
+low=0;
+high=n-1;
+c=binary(a,low,high,key);
+if(c!==-1)
+printf("element found");
+else
+printf("not found");
+int binary(int a[],int low,int high,int key)
+{
+if(low<high)
+{
+return-1;
+}
+int mid=(high+low)/2;
+if(a[mid]==key)
+{
+return mid;
+}
+else if(key<a[mid])
+{
+binary(a,low,mid-1,key)
+}
+else
+{
+binary(a,mid+1,high,key);
+}
+}

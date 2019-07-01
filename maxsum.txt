@@ -1,0 +1,29 @@
+int maxsum(int a[],int n)
+{
+int i,j,k,sum,maxsum=0;
+for(i=0;i<n;i++)
+{
+for(j=0;j<n;j++)
+{
+sum=0;
+for(k=0;k<j;k++)
+{
+sum=sum+a[k];
+}
+if(sum>maxsum)
+maxsum=sum
+}
+}
+return maxsum;
+}
+int main()
+{
+int i,arr[100],p,n,f;
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+scanf("%d",&arr[i]);
+}
+f=maxsum(arr,n);
+printf("%d",f);
+}
